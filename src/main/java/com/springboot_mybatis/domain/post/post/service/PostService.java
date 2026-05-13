@@ -1,0 +1,18 @@
+package com.springboot_mybatis.domain.post.post.service;
+
+import com.springboot_mybatis.domain.post.post.dto.Post;
+import com.springboot_mybatis.domain.post.post.repository.PostRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@RequiredArgsConstructor
+@Service
+public class PostService {
+    private final PostRepository postRepository;
+
+    public List<Post> findAll() {
+        return postRepository.findAll();
+    }
+}
