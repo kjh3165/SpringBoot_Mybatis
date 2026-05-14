@@ -96,4 +96,18 @@ public interface PostRepository {
     """)
     List<Post> search(@Param("kwType") String kwType,
                       @Param("kw") String kw);
+
+    @Select("""
+    <script>
+    SELECT *
+    FROM post
+    <if test="orderBy != null and orderBy != ''">
+        ORDER BY title
+    </if>
+    <if test="orderOption != null and orderOption.toLowerCase() == 'desc'">
+        DESC
+    </if>
+    </script>
+    """)
+    List<Post> findAllOrdered(String orderBy, String orderOption);
 }
