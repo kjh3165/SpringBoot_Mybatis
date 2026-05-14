@@ -70,4 +70,12 @@ public interface PostRepository {
     int update(@Param("id") int id,
                @Param("title") String title,
                @Param("content") String content);
+
+    @Select("""
+    SELECT *
+    FROM post
+    WHERE title LIKE CONCAT('%', #{kw}, '%')
+    """)
+    List<Post> search(@Param("kwType") String kwType,
+                      @Param("kw") String kw);
 }
