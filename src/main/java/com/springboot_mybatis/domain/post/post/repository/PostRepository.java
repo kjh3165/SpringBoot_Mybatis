@@ -72,9 +72,27 @@ public interface PostRepository {
                @Param("content") String content);
 
     @Select("""
+    <script>
     SELECT *
     FROM post
-    WHERE title LIKE CONCAT('%', #{kw}, '%')
+    <where>
+        <choose>
+            <when test="kwType == 'title'">
+                title LIKE CONCAT('%', #{kw}, '%')
+            </when>
+            <when test="kwType == 'content'">
+                content LIKE CONCAT('%', #{kw}, '%')
+            </when>
+            <otherwise>
+                (
+                    title LIKE CONCAT('%', #{kw}, '%')
+                    OR
+                    content LIKE CONCAT('%', #{kw}, '%')
+                )
+            </otherwise>
+        </choose>
+    </where>
+    </script>
     """)
     List<Post> search(@Param("kwType") String kwType,
                       @Param("kw") String kw);
