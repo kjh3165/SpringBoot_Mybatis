@@ -1,10 +1,7 @@
 package com.springboot_mybatis.domain.post.post.repository;
 
 import com.springboot_mybatis.domain.post.post.dto.Post;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -32,9 +29,9 @@ public interface PostRepository {
     <script>
     INSERT INTO post
     SET createDate = NOW(),
-    modifyDate = NOW(),
-    title = #{title},
-    content = #{content}
+        modifyDate = NOW(),
+        title = #{title},
+        content = #{content}
     </script>
     """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
@@ -44,9 +41,9 @@ public interface PostRepository {
     <script>
     INSERT INTO post
     SET createDate = NOW(),
-    modifyDate = NOW(),
-    title = #{title},
-    content = #{content}
+        modifyDate = NOW(),
+        title = #{title},
+        content = #{content}
     </script>
     """)
     void createV2(String title, String content);
@@ -55,4 +52,11 @@ public interface PostRepository {
     SELECT LAST_INSERT_ID()
     """)
     int getLastInsertId();
+
+    @Delete("""
+    DELETE
+    FROM post
+    WHERE id = #{id}
+    """)
+    void deleteById(int id);
 }
