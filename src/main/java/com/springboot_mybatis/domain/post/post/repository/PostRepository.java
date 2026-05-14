@@ -39,4 +39,20 @@ public interface PostRepository {
     """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int create(Post post);
+
+    @Insert("""
+    <script>
+    INSERT INTO post
+    SET createDate = NOW(),
+    modifyDate = NOW(),
+    title = #{title},
+    content = #{content}
+    </script>
+    """)
+    void createV2(String title, String content);
+
+    @Select("""
+    SELECT LAST_INSERT_ID()
+    """)
+    int getLastInsertId();
 }
