@@ -127,4 +127,16 @@ public interface PostRepository {
     </script>
     """)
     List<Post> findAllOrdered(String orderBy, String orderOption);
+
+    @Delete("""
+    <script>
+    DELETE
+    FROM post
+    WHERE id IN 
+    <foreach collection="ids" item="id" open="(" separator="," close=")">
+        #{id}
+    </foreach>
+    </script>
+    """)
+    int deleteByIds(List<Integer> ids);
 }
