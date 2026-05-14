@@ -102,7 +102,12 @@ public interface PostRepository {
     SELECT *
     FROM post
     <if test="orderBy != null and orderBy != ''">
-        ORDER BY title
+        ORDER BY
+        <choose>
+            <when test="orderBy == 'title'">title</when>
+            <when test="orderBy == 'createDate'">createDate</when>
+            <when test="orderBy == 'modifyDate'">modifyDate</when>
+        </choose>
     </if>
     <if test="orderOption != null and orderOption.toLowerCase() == 'desc'">
         DESC
