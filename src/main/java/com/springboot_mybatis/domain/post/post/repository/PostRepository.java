@@ -59,4 +59,15 @@ public interface PostRepository {
     WHERE id = #{id}
     """)
     void deleteById(int id);
+
+    @Update("""
+    UPDATE post
+    SET modifyDate = NOW(),
+        title = #{title},
+        content = #{content}
+    WHERE id = #{id}
+    """)
+    int update(@Param("id") int id,
+               @Param("title") String title,
+               @Param("content") String content);
 }
