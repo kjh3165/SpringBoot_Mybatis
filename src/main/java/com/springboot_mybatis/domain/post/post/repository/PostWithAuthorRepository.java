@@ -8,4 +8,5 @@ import java.util.List;
 @Mapper
 public interface PostWithAuthorRepository {
     List<PostWithAuthor> findAllWithAuthor();
+    PostWithAuthor findByIdWithAuthor(int id);
 }

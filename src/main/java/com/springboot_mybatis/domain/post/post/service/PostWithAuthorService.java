@@ -15,4 +15,8 @@ public class PostWithAuthorService {
     public List<PostWithAuthor> findAllWithAuthor() {
         return postWithAuthorRepository.findAllWithAuthor();
     }
+
+    public PostWithAuthor findByIdWithAuthor(int id) {
+        return postWithAuthorRepository.findByIdWithAuthor(id);
+    }
 }
