@@ -35,4 +35,6 @@ public interface PostRepository {
     int deleteByIds(List<Integer> ids);
 
     Post findByIdWithAuthorName(int id);
+
+    List<Post> searchWithAuthorName(String kwType, String kw);
 }
