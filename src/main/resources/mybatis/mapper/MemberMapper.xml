@@ -33,4 +33,29 @@
         DELETE FROM member WHERE id=#{id}
     </delete>
 
+    <!--회원 정보 수정-->
+    <update id="update">
+        UPDATE member
+        <set>
+            <if test="username != null and username != ''">
+                username=#{username},
+            </if>
+            <if test="password != null and password != ''">
+                password=#{password},
+            </if>
+            <if test="name != null and name != ''">
+                name=#{name},
+            </if>
+            <if test="email != null and email != ''">
+                email=#{email},
+            </if>
+            modifyDate=now()
+        </set>
+        <where>
+            <if test="id != null and id > 0">
+                id = #{id}
+            </if>
+        </where>
+    </update>
+
 </mapper>

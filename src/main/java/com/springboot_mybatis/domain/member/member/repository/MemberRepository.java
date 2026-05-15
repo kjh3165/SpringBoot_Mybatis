@@ -16,4 +16,6 @@ public interface MemberRepository {
     int save(Member member);
 
     void deleteById(int id);
+
+    void update(int id, String username, String password, String name, String email);
 }
