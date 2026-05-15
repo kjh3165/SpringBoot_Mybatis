@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface MemberRepository {
     List<Member> findAll();
+
+    Member findById(int id);
 }

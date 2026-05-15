@@ -6,4 +6,10 @@
     <select id="findAll" resultType="Member">
         SELECT * FROM member
     </select>
+
+    <!--회원 단건 조회-->
+    <select id="findById" resultType="Member">
+        SELECT * FROM member WHERE id=#{id}
+    </select>
+
 </mapper>
