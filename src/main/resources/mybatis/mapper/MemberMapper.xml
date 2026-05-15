@@ -84,4 +84,13 @@
         </where>
     </select>
 
+    <!--회원 다중 삭제-->
+    <delete id="deleteByIds">
+        DELETE FROM member
+        WHERE id IN
+            <foreach collection="ids" item="id" open="(" separator="," close=")">
+                #{id}
+            </foreach>
+    </delete>
+
 </mapper>

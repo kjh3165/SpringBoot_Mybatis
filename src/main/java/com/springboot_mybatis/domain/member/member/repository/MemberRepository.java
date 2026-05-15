@@ -20,4 +20,6 @@ public interface MemberRepository {
     void update(int id, String username, String password, String name, String email);
 
     List<Member> search(String kwType, String kw);
+
+    int deleteByIds(List<Integer> ids);
 }
