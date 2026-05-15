@@ -17,4 +17,15 @@
         SELECT * FROM member WHERE username=#{username}
     </select>
 
+    <!--회원 생성-->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO member
+        SET username=#{username},
+            password=#{password},
+            name=#{name},
+            email=#{email},
+            createDate=now(),
+            modifyDate=now()
+    </insert>
+
 </mapper>

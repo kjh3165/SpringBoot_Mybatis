@@ -12,4 +12,6 @@ public interface MemberRepository {
     Member findById(int id);
 
     Member findByUsername(String username);
+
+    int save(Member member);
 }
