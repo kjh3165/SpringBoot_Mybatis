@@ -14,4 +14,6 @@ public interface MemberRepository {
     Member findByUsername(String username);
 
     int save(Member member);
+
+    void deleteById(int id);
 }

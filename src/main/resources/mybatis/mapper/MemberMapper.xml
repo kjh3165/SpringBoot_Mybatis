@@ -28,4 +28,9 @@
             modifyDate=now()
     </insert>
 
+    <!--회원 삭제-->
+    <delete id="deleteById">
+        DELETE FROM member WHERE id=#{id}
+    </delete>
+
 </mapper>
