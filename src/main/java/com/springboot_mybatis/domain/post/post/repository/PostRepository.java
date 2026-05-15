@@ -33,4 +33,6 @@ public interface PostRepository {
     List<Post> findAllOrdered(String orderBy, String orderOption);
 
     int deleteByIds(List<Integer> ids);
+
+    Post findByIdWithAuthorName(int id);
 }
