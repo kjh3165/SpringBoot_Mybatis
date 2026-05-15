@@ -6,6 +6,7 @@ CREATE TABLE post(
                      id INT UNSIGNED NOT NULL AUTO_INCREMENT,
                      createDate DATETIME(6) NOT NULL,
                      modifyDate DATETIME(6) NOT NULL,
+                     memberId INT UNSIGNED NOT NULL,
                      title CHAR(100) NOT NULL,
                      content TEXT NOT NULL,
                      PRIMARY KEY(id)
@@ -14,12 +15,14 @@ CREATE TABLE post(
 INSERT INTO post
 SET createDate = now(6),
 modifyDate = now(6),
+memberId = 1,
 title = '제목 1',
 content = '내용 1';
 
 INSERT INTO post
 SET createDate = now(6),
 modifyDate = now(6),
+memberId =2,
 title = '제목 2',
 content = '내용 2';
 
