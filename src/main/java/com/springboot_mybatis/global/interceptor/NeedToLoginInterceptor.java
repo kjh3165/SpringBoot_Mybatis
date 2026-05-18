@@ -1,18 +1,28 @@
 package com.springboot_mybatis.global.interceptor;
 
+import com.springboot_mybatis.global.rq.Rq;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+@RequiredArgsConstructor
 @Component
 @Slf4j
 public class NeedToLoginInterceptor  implements HandlerInterceptor {
+    private final Rq rq;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.debug("NeedToLoginInterceptor::preHandle 실행됨");
+
+        rq.increaseCount();
+        log.debug("""
+                rq: %s, rq.count: %s
+                """.formatted(rq, rq.getCount()));
 
         HttpSession session = request.getSession();
         Integer loginedMemerId =  (Integer) session.getAttribute("loginedMemerId");
