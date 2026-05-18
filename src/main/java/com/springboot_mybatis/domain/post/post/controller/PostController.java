@@ -1,6 +1,7 @@
 package com.springboot_mybatis.domain.post.post.controller;
 
 import com.springboot_mybatis.domain.post.post.service.PostService;
+import com.springboot_mybatis.global.rq.Rq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PostController {
     private final PostService postService;
+    private final Rq rq;
 
     @GetMapping("/write")
     public String write() {
@@ -22,6 +24,8 @@ public class PostController {
 
     @GetMapping("/list")
     public String list() {
+        System.out.println("list : " + rq.getCurrentUrl());
+
         return "post/post/list";
     }
 
