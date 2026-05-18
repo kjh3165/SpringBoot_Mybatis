@@ -32,7 +32,7 @@ public class NeedToLoginInterceptor  implements HandlerInterceptor {
         boolean isLogined = loginedMemerId != null;
 
         // 비회원 접근 경우
-        if (isLogined == false) {
+        if (rq.isLogout()) {
             response.setCharacterEncoding("UTF-8");
             response.setContentType("text/html;charset=UTF-8");
             response.getWriter().append("로그인 후 이용바랍니다.");
