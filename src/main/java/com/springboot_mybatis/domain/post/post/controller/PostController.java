@@ -1,5 +1,6 @@
 package com.springboot_mybatis.domain.post.post.controller;
 
+import com.springboot_mybatis.domain.post.post.dto.Post;
 import com.springboot_mybatis.domain.post.post.service.PostService;
 import com.springboot_mybatis.global.rq.Rq;
 import lombok.RequiredArgsConstructor;
@@ -33,5 +34,17 @@ public class PostController {
     public String detail(@PathVariable Integer id, Model model) {
         model.addAttribute("id", id);
         return "post/post/detail";
+    }
+
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable Integer id) {
+
+        Post post = postService.findById(id);
+
+        if (rq.getLoginedMember().getId() != post.getMemberId()) {
+            return "회원 불일치";
+        }
+
+        return "post/post/write";
     }
 }
